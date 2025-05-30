@@ -1,149 +1,108 @@
 
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>اپنا سوشل میڈیا کا اپنا بلڈ بینک</title>
   <style>
     body {
-      font-family: 'Noto Nastaliq Urdu', 'Arial', sans-serif;
-      background-color: #f0f8ff;
-      text-align: center;
-      direction: rtl;
-      padding: 20px;
+      font-family: sans-serif;
+      margin: 0;
+      background: #f0f8ff;
+    }
+    header {
+      background: #0077cc;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    header img {
+      height: 50px;
     }
     h1 {
-      color: darkred;
-      font-size: 28px;
+      font-size: 1.5rem;
+      margin: 0;
     }
-    .phones {
-      margin: 10px 0;
-      font-size: 18px;
+    .contact {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
     }
-    form, table {
-      margin: 20px auto;
-      width: 90%;
-      max-width: 600px;
+    .contact a {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
     }
-    input, select {
-      padding: 10px;
-      margin: 5px;
-      width: 100%;
-      box-sizing: border-box;
-      font-size: 16px;
+    .contact img {
+      width: 20px;
     }
-    button {
-      padding: 10px 20px;
-      background-color: crimson;
+    .add-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #28a745;
       color: white;
       border: none;
-      font-size: 16px;
+      font-size: 2rem;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      margin-top: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     }
-    table {
-      border-collapse: collapse;
-      width: 100%;
+    .donor-form, .donor-list {
+      padding: 1rem;
     }
-    th, td {
-      border: 1px solid #aaa;
-      padding: 10px;
-    }
-    th {
-      background-color: #dcdcdc;
-    }
-    #search {
-      width: 90%;
-      max-width: 400px;
-      margin-bottom: 20px;
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.2rem;
+      }
+      header img {
+        height: 40px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>اپنا سوشل میڈیا کا اپنا بلڈ بینک</h1>
-  <div class="phones">📞 03174036186 | 📞 03006267517</div>
+  <header>
+    <img src="logo.png" alt="Logo" />
+    <h1>اپنا سوشل میڈیا کا اپنا بلڈ بینک</h1>
+    <div class="contact">
+      <a href="https://wa.me/923174036186" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+        03174036186
+      </a>
+      <a href="https://wa.me/923006267517" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+        03006267517
+      </a>
+    </div>
+  </header>
 
-  <h2>ڈونر شامل کریں</h2>
-  <form id="donorForm">
-    <input type="text" id="name" placeholder="نام" required />
-    <select id="bloodGroup" required>
-      <option value="">بلڈ گروپ منتخب کریں</option>
-      <option>A+</option>
-      <option>A-</option>
-      <option>B+</option>
-      <option>B-</option>
-      <option>AB+</option>
-      <option>AB-</option>
-      <option>O+</option>
-      <option>O-</option>
-    </select>
-    <input type="text" id="city" placeholder="شہر" required />
-    <input type="text" id="contact" placeholder="رابطہ نمبر" required />
-    <button type="submit">شامل کریں</button>
-  </form>
+  <main>
+    <div class="donor-form">
+      <!-- Add donor form HTML here -->
+      <p>ڈونر فارم یہاں شامل کیا جائے گا</p>
+    </div>
 
-  <h2>ڈونرز تلاش کریں</h2>
-  <input type="text" id="search" onkeyup="searchDonors()" placeholder="شہر یا بلڈ گروپ تلاش کریں" />
+    <div class="donor-list">
+      <!-- Donor list section -->
+      <p>ڈونر لسٹ یہاں ظاہر ہوگی</p>
+    </div>
+  </main>
 
-  <table id="donorTable">
-    <thead>
-      <tr>
-        <th>نام</th>
-        <th>بلڈ گروپ</th>
-        <th>شہر</th>
-        <th>رابطہ نمبر</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- ڈونرز یہاں شامل ہوں گے -->
-    </tbody>
-  </table>
-
-  <script>
-    const donorForm = document.getElementById('donorForm');
-    const donorTable = document.getElementById('donorTable').getElementsByTagName('tbody')[0];
-
-    donorForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      const name = document.getElementById('name').value.trim();
-      const bloodGroup = document.getElementById('bloodGroup').value.trim();
-      const city = document.getElementById('city').value.trim();
-      const contact = document.getElementById('contact').value.trim();
-
-      if (name && bloodGroup && city && contact) {
-        const newRow = donorTable.insertRow();
-        newRow.innerHTML = `
-          <td>${name}</td>
-          <td>${bloodGroup}</td>
-          <td>${city}</td>
-          <td>${contact}</td>
-        `;
-
-        donorForm.reset();
-      }
-    });
-
-    function searchDonors() {
-      const input = document.getElementById('search').value.toLowerCase();
-      const rows = donorTable.getElementsByTagName('tr');
-
-      for (let i = 0; i < rows.length; i++) {
-        const cells = rows[i].getElementsByTagName('td');
-        if (cells.length > 0) {
-          const name = cells[0].textContent.toLowerCase();
-          const blood = cells[1].textContent.toLowerCase();
-          const city = cells[2].textContent.toLowerCase();
-          if (name.includes(input) || blood.includes(input) || city.includes(input)) {
-            rows[i].style.display = '';
-          } else {
-            rows[i].style.display = 'none';
-          }
-        }
-      }
-    }
-  </script>
+  <button class="add-button" onclick="alert('نیا ڈونر فارم کھولیں')">+</button>
 
 </body>
 </html>
